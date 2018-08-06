@@ -1,0 +1,34 @@
+***CHANGE LOG***
+
+08/01/18
+  -removed nPrimeLimitB, nSharedSizeKB, nThreadsKernelA from config.ini since
+   sieve will be replaced eventually
+
+  -added nSieveIterationsLog2 and nTestLevels to data drive more tuning options
+
+  -fixed prime ratio wrapping bug
+
+  -fixed CPU utilization bug. freed up massive amount of CPU cycles
+
+08/02/18
+  -fixed serverconnection connecting before GPU device initialization. Now
+   stats won't be biased during first block after connection
+
+  -revisited CPU/GPU utilization, added a conservative sleep to GPU threads so 
+   they don't spin/wait and burn up most of the CPU cycles
+
+  -changed sieving stats from MiB/s to GiB/s to future proof scaling stats
+
+08/03/18
+
+   -decoupled total tests/s into gpu tests/s and cpu tests/s
+
+   -added nine chain meter (for those that are extremely lucky!)
+
+   -changed counters to std::atomic<uint32_t> types to avoid race conditions
+
+08/05/18
+
+   -fixed bug related to computing fermat remainder
+
+   -added base offset to offsets.ini to enable different primorial offset patterns
